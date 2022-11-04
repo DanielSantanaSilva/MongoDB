@@ -1,0 +1,19 @@
+use('blog')
+
+db.infoAutores.updateMany({
+    nome: "Daniel Santana"
+},{
+    $set: {
+      nome: "Daniel Santana Silva"
+    }
+})
+
+db.artigos.updateMany({
+    "autor.nome":"Daniel Santana"
+}, {
+    $set: {
+        "autor.nome": "Daniel Santana Silva"
+    }
+},
+{multi:true}
+)

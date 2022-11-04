@@ -1,0 +1,27 @@
+use ('blog')
+
+db.artigos.update({
+    slug: "primeiro-artigo-daniel"
+}, {
+    $pop: {
+        comentarios: 1
+    }
+})
+
+var documento = db.artigos.findOneAndUpdate({
+    slug: "primeiro-artigo-daniel"
+}, {
+    $push: {
+        comentarios: {
+            $each: [
+                {
+                    nome: "Eduardo",
+                    email: "eduardo@email.com",
+                    texto: "Gostei do artigo!",
+                    data: ISODate('2022-11-04')
+                }
+            ],
+            $position: 0
+        }
+    }
+}, { returnNewDocument: true })
