@@ -1,0 +1,22 @@
+use('blog')
+
+db.autores.updateOne({
+    nome: "Daniel Santana"
+}, {
+    $set:{
+        artigos: [
+            {
+                slug: "primeiro-artigo-daniel",
+                titulo: "Primeiro Artigo",
+                conteudo: "Meu artigo esta sendo feito hoje",
+                dataCriado: ISODate("2022-10-30"),
+            },
+            {
+                slug: "segundo-artigo-daniel",
+                titulo: "Segundo Artigo",
+                conteudo: "Meu segundo artigo esta sendo desenvolvido",
+                dataCriado: ISODate("2022-11-01"),
+            }
+        ]
+    }       
+})

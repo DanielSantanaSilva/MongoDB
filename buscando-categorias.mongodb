@@ -1,0 +1,10 @@
+use('blog')
+
+
+db.artigos.find({categorias: "teste"}).explain("executionStats");
+
+db.artigos.createIndex({categorias: 1});
+
+db.artigos.getIndexes();
+
+db.artigos.createIndex({slug: 1});

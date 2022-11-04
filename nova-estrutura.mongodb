@@ -1,0 +1,16 @@
+use('blog')
+
+db.artigos.insertOne({
+    autor: {
+    nome: "Daniel Santana",
+    descricao: "Desenvolvedor",
+    email: "daniel@email.com",
+    senha: "12345678",
+}, 
+    slug: "primeiro-artigo-daniel",
+    titulo: "Primeiro Artigo",
+    conteudo: "Meu artigo esta sendo feito hoje",
+    dataCriado: ISODate("2022-10-30")
+})
+
+db.artigos.find({slug:"primeiro-artigo-daniel"})

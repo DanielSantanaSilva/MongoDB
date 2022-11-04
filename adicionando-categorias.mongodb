@@ -1,0 +1,9 @@
+use('blog')
+
+db.artigos.updateOne({
+    slug: "primeiro-artigo-daniel"
+}, {
+    $set: {
+      categorias: ["teste"]
+    }
+})

@@ -1,0 +1,7 @@
+use('blog')
+
+db.autores.find({ "artigos.slug": "primeiro-artigo-daniel" })
+
+db.autores.find({ "artigos.slug": "primeiro-artigo-daniel"}, { "artigos.titulo":1, "artigos.conteudo":1 })
+
+db.autores.find({ "nome": "Daniel Santana" }, { "artigos.titulo":1 , "artigos.conteudo":1})

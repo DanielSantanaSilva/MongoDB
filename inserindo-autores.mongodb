@@ -1,0 +1,7 @@
+use('blog')
+db.autores.insertOne({
+    nome: "Daniel Santana",
+    descricao: "Desenvolvedor",
+    email: "daniel@email.com",
+    senha: "12345678"
+})

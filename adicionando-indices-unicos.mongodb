@@ -1,0 +1,11 @@
+use('blog')
+
+
+db.artigos.createIndex({slug: 1},{unique: true})
+
+
+db.artigos.getIndexes()
+
+
+db.artigos.dropIndex("slug_1")
+
