@@ -1,0 +1,52 @@
+use ('blog')
+
+db.infoAutores.insertOne({
+    nome:"Denise Santana",
+    email: "denise@email.com",
+    senha: "denise1234",
+    descricao: "Professora"
+})
+
+const autorInfo = db.infoAutores.findOne({
+    email: "denise@email.com"
+})
+
+db.artigos.insertOne({
+    autor: {
+        nome: autorInfo.nome,
+        descricao: autorInfo.descricao,
+        id_info: autorInfo._id,
+    },
+    slug: "primeiro-artigo-denise",
+    titilo: "Primeiro Artigo",
+    conteudo:"Meu artigo esta sendo feito hoje",
+    dataCrido: ISODate('2022-11-07'),
+    categorias: [ 'teste' ],
+    comentarios: []
+})
+
+const documento = db.artigos.findOneAndUpdate({
+    slug: "primeiro-artigo-denise"
+}, {
+    $push: {
+        comentarios: {
+            $each: [
+                {
+                    nome: "Daniel",
+                    email: "daniel@email.com",
+                    texto: "Achei legal esse artigo!",
+                    data: ISODate('2022-11-07')
+                }
+            ],
+            $position: 0
+        }
+    }
+}, { returnNewDocument: true })
+
+db.comentarios.insertOne({
+    id_artigo: documento._id,
+    nome: "Daniel",
+    email: "daniel@email.com",
+    texto: "Achei legal esse artigo!",
+    data: ISODate('2022-11-07')
+})
